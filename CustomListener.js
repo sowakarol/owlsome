@@ -1,18 +1,21 @@
-var HelloListener = require('./HelloListener').HelloListener;
+var ECMAScriptListener = require('./ECMAScriptListener').ECMAScriptListener;
 var antlr4 = require('antlr4/index');
 
 function FooTranspiler() {
-	HelloListener.call(this);
+	ECMAScriptListener.call(this);
 	this.output = "";
 }
 
-FooTranspiler.prototype = Object.create(HelloListener.prototype);
-FooTranspiler.prototype.constructor = HelloListener;
+FooTranspiler.prototype = Object.create(ECMAScriptListener.prototype);
+FooTranspiler.prototype.constructor = ECMAScriptListener;
 
-FooTranspiler.prototype.enterJsstatement = function(ctx) {
-    var hello = ctx.statement().getText();
-    this.output += hello;
+FooTranspiler.prototype.enterSourceElement = function(ctx) {
+	this.output += ctx.statement().getText();
 };
+
+FooTranspiler.prototype.enterWhiteSpaces = function(ctx) {
+
+}
 
 FooTranspiler.prototype.enterOwlGetStatement = function(ctx) {
     // var hello = "await";
@@ -45,7 +48,7 @@ FooTranspiler.prototype.enterOwlGetStatement = function(ctx) {
 // 		// Replace any occurrence of ${expr}
 // 		// with " + expr + "
 // 		// i.e.
-// 		// "Hello, ${user}!" -> "Hello, " + user + "!"
+// 		// "ECMAScript, ${user}!" -> "ECMAScript, " + user + "!"
 // 		return ctx.STRING().getText().replace(/\$\{([^\}]+)\}/g, '" + $1 + "');
 // 	} else return "undefined";
 // }

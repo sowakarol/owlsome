@@ -29,12 +29,48 @@ ECMAScriptListener.prototype.exitSourceElements = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#element.
+ECMAScriptListener.prototype.enterElement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#element.
+ECMAScriptListener.prototype.exitElement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#sourceElement.
 ECMAScriptListener.prototype.enterSourceElement = function(ctx) {
 };
 
 // Exit a parse tree produced by ECMAScriptParser#sourceElement.
 ECMAScriptListener.prototype.exitSourceElement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlElement.
+ECMAScriptListener.prototype.enterOwlElement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlElement.
+ECMAScriptListener.prototype.exitOwlElement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlGetStatement.
+ECMAScriptListener.prototype.enterOwlGetStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlGetStatement.
+ECMAScriptListener.prototype.exitOwlGetStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlPostStatement.
+ECMAScriptListener.prototype.enterOwlPostStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlPostStatement.
+ECMAScriptListener.prototype.exitOwlPostStatement = function(ctx) {
 };
 
 
@@ -305,15 +341,6 @@ ECMAScriptListener.prototype.enterFinallyProduction = function(ctx) {
 
 // Exit a parse tree produced by ECMAScriptParser#finallyProduction.
 ECMAScriptListener.prototype.exitFinallyProduction = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ECMAScriptParser#debuggerStatement.
-ECMAScriptListener.prototype.enterDebuggerStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by ECMAScriptParser#debuggerStatement.
-ECMAScriptListener.prototype.exitDebuggerStatement = function(ctx) {
 };
 
 

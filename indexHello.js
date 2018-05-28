@@ -1,21 +1,23 @@
+
 var antlr4 = require('antlr4/index');
-var HelloLexer = require('./HelloLexer.js');
-var HelloListener = require('./HelloListener.js');
-var HelloParser = require('./HelloParser.js');
+var ECMAScriptLexer = require('./ECMAScriptLexer.js');
+var ECMAScriptListener = require('./ECMAScriptListener.js');
+var ECMAScriptParser = require('./ECMAScriptParser.js');
 var FooTranspiler = require('./CustomListener.js');
 
 
 // var Listener = function() {
-//     HelloListener.HelloListener.call(this); // chain the constructor
+//     ECMAScriptListener.ECMAScriptListener.call(this); // chain the constructor
 // };
 
-    var input = "{ var asd;}";
+    var input = "{var x= function (x,y) {return 2;}; var   asd = 4; }owl_get :) \"W DUPIE TO MAM\"";
     var chars = new antlr4.InputStream(input);
-    var lexer = new HelloLexer.HelloLexer(chars);
+    var lexer = new ECMAScriptLexer.ECMAScriptLexer(chars);
     var tokens  = new antlr4.CommonTokenStream(lexer);
-    var parser = new HelloParser.HelloParser(tokens);
+    var parser = new ECMAScriptParser.ECMAScriptParser(tokens);
     parser.buildParseTrees = true;
     var tree = parser.program();
+    console.log(tokens.tokenSource);
     //tree.r();
     var transpiler = new FooTranspiler();      
     antlr4.tree.ParseTreeWalker.DEFAULT.walk(transpiler, tree);

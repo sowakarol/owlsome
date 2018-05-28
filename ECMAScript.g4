@@ -147,11 +147,19 @@ program
  : sourceElements? EOF
  ;
 
+
+
+
 /// SourceElements :
 ///     SourceElement
 ///     SourceElements SourceElement
 sourceElements
- : sourceElement+
+ : element+
+;
+
+element
+ : sourceElement
+ | owlElement
  ;
 
 /// SourceElement :
@@ -162,6 +170,21 @@ sourceElement
  | functionDeclaration
  ;
 
+
+owlElement 
+ : owlGetStatement
+ | owlPostStatement
+ ;
+
+owlGetStatement
+ : OwlGet ':)' (StringLiteral | Identifier)
+;
+
+
+
+owlPostStatement
+ : OwlPost (StringLiteral | Identifier)
+;
 /// Statement :
 ///     Block
 ///     VariableStatement
@@ -177,7 +200,6 @@ sourceElement
 ///     SwitchStatement
 ///     ThrowStatement
 ///     TryStatement
-///     DebuggerStatement
 statement
  : block
  | variableStatement
@@ -193,9 +215,8 @@ statement
  | switchStatement
  | throwStatement
  | tryStatement
- | debuggerStatement
+ | owlStatement
  ;
-
 /// Block :
 ///     { StatementList? }
 block
@@ -362,11 +383,7 @@ finallyProduction
  : Finally block
  ;
 
-/// DebuggerStatement :
-///     debugger ;
-debuggerStatement
- : Debugger eos
- ;
+
 
 /// FunctionDeclaration :
 ///     function Identifier ( FormalParameterList? ) { FunctionBody }
@@ -685,7 +702,6 @@ keyword
  | For
  | Switch
  | While
- | Debugger
  | Function
  | This
  | With
@@ -825,51 +841,52 @@ OctalIntegerLiteral
 /// 7.6.1.1 Keywords
 Break      : 'break';
 Do         : 'do';
-Instanceof : 'instanceof';
-Typeof     : 'typeof';
+Instanceof : 'instanceof ';
+Typeof     : 'typeof ';
 Case       : 'case';
 Else       : 'else';
-New        : 'new';
-Var        : 'var';
+New        : 'new ';
+Var        : 'var ';
 Catch      : 'catch';
 Finally    : 'finally';
-Return     : 'return';
+Return     : 'return ';
 Void       : 'void';
 Continue   : 'continue';
 For        : 'for';
 Switch     : 'switch';
 While      : 'while';
-Debugger   : 'debugger';
 Function   : 'function';
 This       : 'this';
-With       : 'with';
-Default    : 'default';
+With       : 'with ';
+Default    : 'default ';
 If         : 'if';
-Throw      : 'throw';
-Delete     : 'delete';
-In         : 'in';
+Throw      : 'throw ';
+Delete     : 'delete ';
+In         : ' in ';
 Try        : 'try';
+OwlGet     : 'owl_get';
+OwlPost    : 'owl_post';
 
 /// 7.6.1.2 Future Reserved Words
-Class   : 'class';
-Enum    : 'enum';
-Extends : 'extends';
+Class   : 'class ';
+Enum    : 'enum ';
+Extends : 'extends ';
 Super   : 'super';
-Const   : 'const';
-Export  : 'export';
-Import  : 'import';
+Const   : 'const ';
+Export  : 'export ';
+Import  : 'import ';
 
 /// The following tokens are also considered to be FutureReservedWords 
 /// when parsing strict mode  
-Implements : {this.strictMode}? 'implements';
-Let        : {this.strictMode}? 'let';
-Private    : {this.strictMode}? 'private';
-Public     : {this.strictMode}? 'public';
-Interface  : {this.strictMode}? 'interface';
-Package    : {this.strictMode}? 'package';
-Protected  : {this.strictMode}? 'protected';
-Static     : {this.strictMode}? 'static';
-Yield      : {this.strictMode}? 'yield';
+Implements : {this.strictMode}? 'implements ';
+Let        : {this.strictMode}? 'let ';
+Private    : {this.strictMode}? 'private ';
+Public     : {this.strictMode}? 'public ';
+Interface  : {this.strictMode}? 'interface ';
+Package    : {this.strictMode}? 'package ';
+Protected  : {this.strictMode}? 'protected ';
+Static     : {this.strictMode}? 'static ';
+Yield      : {this.strictMode}? 'yield ';
 
 /// 7.6 Identifier Names and Identifiers
 Identifier
