@@ -17,7 +17,7 @@ var FooTranspiler = require('./CustomListener.js');
     var parser = new ECMAScriptParser.ECMAScriptParser(tokens);
     parser.buildParseTrees = true;
     var tree = parser.program();
-    console.log(tokens.tokenSource);
+    // console.log(tokens.tokenSource);
     //tree.r();
     var transpiler = new FooTranspiler();      
     antlr4.tree.ParseTreeWalker.DEFAULT.walk(transpiler, tree);

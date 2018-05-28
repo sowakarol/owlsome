@@ -47,12 +47,12 @@ ECMAScriptListener.prototype.exitSourceElement = function(ctx) {
 };
 
 
-// Enter a parse tree produced by ECMAScriptParser#owlElement.
-ECMAScriptListener.prototype.enterOwlElement = function(ctx) {
+// Enter a parse tree produced by ECMAScriptParser#owlStatement.
+ECMAScriptListener.prototype.enterOwlStatement = function(ctx) {
 };
 
-// Exit a parse tree produced by ECMAScriptParser#owlElement.
-ECMAScriptListener.prototype.exitOwlElement = function(ctx) {
+// Exit a parse tree produced by ECMAScriptParser#owlStatement.
+ECMAScriptListener.prototype.exitOwlStatement = function(ctx) {
 };
 
 
