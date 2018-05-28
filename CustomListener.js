@@ -10,16 +10,19 @@ FooTranspiler.prototype = Object.create(ECMAScriptListener.prototype);
 FooTranspiler.prototype.constructor = ECMAScriptListener;
 
 FooTranspiler.prototype.enterSourceElement = function(ctx) {
-	this.output += ctx.statement().getText();
-};
+	if(ctx.statement() != null){
+		if(ctx.statement().owlStatement() != null){
+			this.output += " THEY SEE MEE OWLIN', THEY HATIN'"
+		}else {
+			this.output += ctx.statement().getText();
 
-FooTranspiler.prototype.enterWhiteSpaces = function(ctx) {
+		}
+	}
 
-}
+	if(ctx.functionDeclaration() != null){
+		this.output += ctx.functionDeclaration().getText();
+	}
 
-FooTranspiler.prototype.enterOwlGetStatement = function(ctx) {
-    // var hello = "await";
-    // this.output += hello;
 };
 
 
