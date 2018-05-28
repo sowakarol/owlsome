@@ -1,0 +1,19 @@
+T__0=1
+T__1=2
+T__2=3
+T__3=4
+T__4=5
+Identifier=6
+WhiteSpaces=7
+MultiLineComment=8
+SingleLineComment=9
+LineTerminator=10
+Var=11
+SemiColon=12
+'function'=1
+'{'=2
+'}'=3
+','=4
+'= 5'=5
+'var'=11
+';'=12

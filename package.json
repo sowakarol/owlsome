@@ -1,0 +1,17 @@
+{
+  "name": "antlr4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "antlr4": "^4.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "java org.antlr.v4.Tool -Dlanguage=JavaScript  .\\Hello.g4 && node indexHello.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
