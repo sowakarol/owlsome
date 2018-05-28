@@ -12,7 +12,12 @@ FooTranspiler.prototype.constructor = ECMAScriptListener;
 FooTranspiler.prototype.enterSourceElement = function(ctx) {
 	if(ctx.statement() != null){
 		if(ctx.statement().owlStatement() != null){
-			this.output += " THEY SEE MEE OWLIN', THEY HATIN'"
+			if(ctx.statement().owlStatement().owlGetStatement() != null){
+				this.output += " THEY SEE MEE OWLIN', THEY HATIN'"
+			}
+			if(ctx.statement().owlStatement().owlPostStatement() != null){
+				this.output += " THEY SEE MEE OWLIN'"
+			}
 		}else {
 			this.output += ctx.statement().getText();
 
