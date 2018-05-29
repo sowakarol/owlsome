@@ -4,6 +4,7 @@ var antlr4 = require('antlr4/index');
 function FooTranspiler() {
 	ECMAScriptListener.call(this);
 	this.output = "";
+	this.counter = 0;
 }
 
 FooTranspiler.prototype = Object.create(ECMAScriptListener.prototype);
@@ -13,7 +14,19 @@ FooTranspiler.prototype.enterSourceElement = function(ctx) {
 	if(ctx.statement() != null){
 		if(ctx.statement().owlStatement() != null){
 			if(ctx.statement().owlStatement().owlGetStatement() != null){
-				this.output += " THEY SEE MEE OWLIN', THEY HATIN'"
+				let owlGet = ctx.statement().owlStatement().owlGetStatement();
+				let arg = owlGet.StringLiteral() != null ? owlGet.StringLiteral().getText() : owlGet.Identifier().getText();
+
+				this.output += `
+				async owl${this.counter}() { 
+					return await http.get( ${arg} , (res) => { 
+						${this.output}
+					}).on("error", (err) => {
+						console.log("Error: " + err.message);
+					});
+				}	
+				`;
+				this.counter++;
 			}
 			if(ctx.statement().owlStatement().owlPostStatement() != null){
 				this.output += " THEY SEE MEE OWLIN'"
