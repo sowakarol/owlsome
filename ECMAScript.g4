@@ -182,7 +182,7 @@ owlGetStatement
 
 
 owlPostStatement
- : OwlPost (StringLiteral | Identifier)
+ : OwlPost ':)' (StringLiteral | Identifier) ':)'  objectLiteral
 ;
 /// Statement :
 ///     Block

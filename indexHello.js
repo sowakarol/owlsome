@@ -10,7 +10,14 @@ var FooTranspiler = require('./CustomListener.js');
 //     ECMAScriptListener.ECMAScriptListener.call(this); // chain the constructor
 // };
 
-    var input = "{var x= function (x,y) {return 2;}; var   asd = 4; }owl_get :) \"W DUPIE TO MAM\"";
+    var input = `
+    {var x= function (x,y) {
+            return 2;
+        }; var   asd = 4; 
+    }
+    owl_get :) "http://fajny-url";
+    owl_post :) "http://fajniejszy-url" :) { "asd":"asd"};
+    `;
     var chars = new antlr4.InputStream(input);
     var lexer = new ECMAScriptLexer.ECMAScriptLexer(chars);
     var tokens  = new antlr4.CommonTokenStream(lexer);
