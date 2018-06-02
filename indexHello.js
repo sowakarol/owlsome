@@ -15,8 +15,9 @@ var FooTranspiler = require('./CustomListener.js');
             return 2;
         }; var   asd = 4; 
     }
-    owl_get :) "http://fajny-url";
-    owl_post :) "http://fajniejszy-url" :) { "asd":"asd"};
+    owl_get :) "http://fajny-url" console.log('test-inside'); :)
+    owl_post :) "http://fajniejszy-url" :) { "asd":"asd"} console.log('test-inside');; :)
+    owl_json :) {a : { x : 4} } :) "a.b.c.d" :)
     `;
     var chars = new antlr4.InputStream(input);
     var lexer = new ECMAScriptLexer.ECMAScriptLexer(chars);

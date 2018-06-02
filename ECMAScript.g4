@@ -173,17 +173,23 @@ sourceElement
 owlStatement 
  : owlGetStatement
  | owlPostStatement
+ | owlJsonCheckStatement
  ;
 
 owlGetStatement
- : OwlGet ':)' (StringLiteral | Identifier)
+ : OwlGet ':)' (StringLiteral | Identifier) (jsstatement)* ':)'
 ;
 
 
 
 owlPostStatement
- : OwlPost ':)' (StringLiteral | Identifier) ':)'  objectLiteral
+ : OwlPost ':)' (StringLiteral | Identifier) ':)'  objectLiteral (jsstatement)* ':)'
 ;
+
+owlJsonCheckStatement
+ : OwlJsonCheck ':)' (objectLiteral | Identifier) ':)' StringLiteral ':)'
+;
+
 /// Statement :
 ///     Block
 ///     VariableStatement
@@ -200,7 +206,14 @@ owlPostStatement
 ///     ThrowStatement
 ///     TryStatement
 statement
- : block
+ : jsstatement
+ | owlStatement
+ ;
+/// Block :
+///     { StatementList? }
+
+jsstatement
+: block
  | variableStatement
  | emptyStatement
  | expressionStatement
@@ -214,10 +227,8 @@ statement
  | switchStatement
  | throwStatement
  | tryStatement
- | owlStatement
- ;
-/// Block :
-///     { StatementList? }
+;
+
 block
  : '{' statementList? '}'
  ;
@@ -865,6 +876,7 @@ In         : ' in ';
 Try        : 'try';
 OwlGet     : 'owl_get';
 OwlPost    : 'owl_post';
+OwlJsonCheck    : 'owl_json';
 
 /// 7.6.1.2 Future Reserved Words
 Class   : 'class ';

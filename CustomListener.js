@@ -17,6 +17,13 @@ function FooTranspiler() {
 FooTranspiler.prototype = Object.create(ECMAScriptListener.prototype);
 FooTranspiler.prototype.constructor = ECMAScriptListener;
 
+FooTranspiler.prototype.enterProgram = function (ctx) {
+	this.output = `
+	var http = require('http');
+	`;
+}
+
+
 FooTranspiler.prototype.enterSourceElement = function (ctx) {
 	if (ctx.statement() != null) {
 		if (ctx.statement().owlStatement() != null) {
@@ -28,7 +35,11 @@ FooTranspiler.prototype.enterSourceElement = function (ctx) {
 				async owl${this.counter}() { 
 					return await http.get( ${arg} , (res) => { 
 						
-				`
+				`;
+				// if(owlGet.jsstatement()){
+				// 	console.log(owlGet.jsstatement());
+				// }
+
 				this.counter++;
 			}
 			if (ctx.statement().owlStatement().owlPostStatement() != null) {
@@ -46,10 +57,33 @@ FooTranspiler.prototype.enterSourceElement = function (ctx) {
 					return await http.request( ${JSON.stringify(options)} , (res) => { 
 						
 				`;
+
 				this.counter++;
 			}
+			if(ctx.statement().owlStatement().owlJsonCheckStatement()){
+				let owlJsonCheck = ctx.statement().owlStatement().owlJsonCheckStatement();
+				let obj = owlJsonCheck.objectLiteral() != null ? owlJsonCheck.objectLiteral().getText() : owlJsonCheck.Identifier().getText();
+				let options = owlJsonCheck.StringLiteral().getText();
+				this.output += `
+				let owl${this.counter}, owls${this.counter + 1} = ${options}.split('.');
+
+				for (let i = 0, iLen = owls${this.counter + 1}.length - 1; i < iLen; i++) {
+					owl${this.counter} = owls${this.counter + 1}[i];
+			
+					let candidate = ${obj}[owl${this.counter}];
+					if (candidate !== undefined) {
+						${obj} = candidate;
+					} else {
+						${obj} = {};
+					}
+				}
+				`;
+				this.counter += 2;
+
+				// console.log(obj);
+			}
 		} else {
-			this.output += ctx.statement().getText();
+			// this.output += ctx.statement().getText();
 		}
 	}
 
@@ -63,28 +97,28 @@ FooTranspiler.prototype.exitSourceElement = function (ctx) {
 	if (ctx.statement() != null) {
 		if (ctx.statement().owlStatement() != null) {
 			if (ctx.statement().owlStatement().owlGetStatement() != null) {
-				console.log("exit");
 				this.output += `
-
-			}).on("error", (err) => {
-				console.log("Error: " + err.message);
-			});
-		}`;
+					}).on("error", (err) => {
+						console.log("Error: " + err.message);
+					});
+				}`;
 			}
 
 			if (ctx.statement().owlStatement().owlPostStatement() != null) {
 				this.output += `
-
-			}).on("error", (err) => {
-				console.log("Error: " + err.message);
-			});
-		}`;
+					}).on("error", (err) => {
+						console.log("Error: " + err.message);
+					});
+				}`;
 			}
 		}
 
 	}
 };
 
+FooTranspiler.prototype.enterJsstatement = function (ctx){
+	this.output += ctx.getText();
+}
 
 
 // FooTranspiler.prototype.enterInvocationStmt = function(ctx) {

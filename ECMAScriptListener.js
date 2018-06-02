@@ -1,4 +1,4 @@
-// Generated from .\ECMAScript.g4 by ANTLR 4.7.1
+// Generated from .\\ECMAScript.g4 by ANTLR 4.7.1
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -74,12 +74,30 @@ ECMAScriptListener.prototype.exitOwlPostStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#owlJsonCheckStatement.
+ECMAScriptListener.prototype.enterOwlJsonCheckStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlJsonCheckStatement.
+ECMAScriptListener.prototype.exitOwlJsonCheckStatement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#statement.
 ECMAScriptListener.prototype.enterStatement = function(ctx) {
 };
 
 // Exit a parse tree produced by ECMAScriptParser#statement.
 ECMAScriptListener.prototype.exitStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#jsstatement.
+ECMAScriptListener.prototype.enterJsstatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#jsstatement.
+ECMAScriptListener.prototype.exitJsstatement = function(ctx) {
 };
 
 
