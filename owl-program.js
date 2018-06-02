@@ -28,16 +28,10 @@ owl0()
 }
 owl2()
 var variable={a:{x:4}};
-	let owl_var0, owls_var1 = "a.b.c.d".split('.');
-
-	for (let i = 0, iLen = owls_var1.length - 1; i < iLen; i++) {
-		owl_var0 = owls_var1[i];
-
-		let candidate = variable[owl_var0];
-		if (candidate !== undefined) {
-			variable = candidate;
-		} else {
-			variable = {};
-		}
-	}
+	let owl_var0 = "a.b.c.d".split('.');
+	let owl_var2 = owl_var0.reduce((accumulator, currentValue) => {
+	  if (accumulator[currentValue] === undefined) accumulator[currentValue] = {};
+	  return accumulator[currentValue];
+	}, variable);
+	console.log(variable);
 	

@@ -73,20 +73,14 @@ FooTranspiler.prototype.enterOwlJsonCheckStatement = function (ctx) {
 	let obj = ctx.objectLiteral() != null ? ctx.objectLiteral().getText() : ctx.Identifier().getText();
 	let options = ctx.StringLiteral().getText();
 	this.output += `
-	let owl_var${this.varCounter}, owls_var${this.varCounter + 1} = ${options}.split('.');
-
-	for (let i = 0, iLen = owls_var${this.varCounter + 1}.length - 1; i < iLen; i++) {
-		owl_var${this.varCounter} = owls_var${this.varCounter + 1}[i];
-
-		let candidate = ${obj}[owl_var${this.varCounter}];
-		if (candidate !== undefined) {
-			${obj} = candidate;
-		} else {
-			${obj} = {};
-		}
-	}
+	let owl_var${this.varCounter} = ${options}.split('.');
+	let owl_var${this.varCounter + 2} = owl_var${this.varCounter}.reduce((accumulator, currentValue) => {
+	  if (accumulator[currentValue] === undefined) accumulator[currentValue] = {};
+	  return accumulator[currentValue];
+	}, ${obj});
+	console.log(${obj});
 	`;
-	this.varCounter += 2;
+	this.varCounter += 3;
 }
 
 FooTranspiler.prototype.enterSourceElement = function (ctx) {
