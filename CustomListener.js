@@ -5,7 +5,10 @@ function FooTranspiler() {
 	ECMAScriptListener.call(this);
 	this.output = "";
 	this.ending = "";
-	this.counter = 0;
+	this.functionCounter = [];
+	this.maxFunc = 0;
+	this.varCounter = 0;
+
 }
 
 
@@ -22,9 +25,10 @@ FooTranspiler.prototype.enterOwlGetStatement = function (ctx) {
 	let arg = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
 
 	this.output += `
-	async function owl${this.counter++}() { 
+	async function owl${this.maxFunc}() { 
 		return await http.get( ${arg} , (res) => { 
 	`;
+	this.functionCounter.push(this.maxFunc++);
 }
 
 FooTranspiler.prototype.exitOwlGetStatement = function (ctx) {
@@ -32,7 +36,9 @@ FooTranspiler.prototype.exitOwlGetStatement = function (ctx) {
 }).on("error", (err) => {
 	console.log("Error: " + err.message);
 });
-}`;
+} 
+owl${this.functionCounter.pop()}()
+`;
 }
 
 FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
@@ -45,9 +51,11 @@ FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
 	};
 
 	this.output += `
-	async function owl${this.counter++}() { 
+	async function owl${this.maxFunc}() { 
 		return await http.request( ${JSON.stringify(options)} , (res) => { 
 	`;
+	this.functionCounter.push(this.maxFunc++);
+
 }
 
 
@@ -56,19 +64,21 @@ FooTranspiler.prototype.exitOwlPostStatement = function (ctx) {
 }).on("error", (err) => {
 	console.log("Error: " + err.message);
 });
-}`;
+}
+owl${this.functionCounter.pop()}()
+`;
 }
 
 FooTranspiler.prototype.enterOwlJsonCheckStatement = function (ctx) {
 	let obj = ctx.objectLiteral() != null ? ctx.objectLiteral().getText() : ctx.Identifier().getText();
 	let options = ctx.StringLiteral().getText();
 	this.output += `
-	let owl${this.counter}, owls${this.counter + 1} = ${options}.split('.');
+	let owl_var${this.varCounter}, owls_var${this.varCounter + 1} = ${options}.split('.');
 
-	for (let i = 0, iLen = owls${this.counter + 1}.length - 1; i < iLen; i++) {
-		owl${this.counter} = owls${this.counter + 1}[i];
+	for (let i = 0, iLen = owls_var${this.varCounter + 1}.length - 1; i < iLen; i++) {
+		owl_var${this.varCounter} = owls_var${this.varCounter + 1}[i];
 
-		let candidate = ${obj}[owl${this.counter}];
+		let candidate = ${obj}[owl_var${this.varCounter}];
 		if (candidate !== undefined) {
 			${obj} = candidate;
 		} else {
@@ -76,7 +86,7 @@ FooTranspiler.prototype.enterOwlJsonCheckStatement = function (ctx) {
 		}
 	}
 	`;
-	this.counter += 2;
+	this.varCounter += 2;
 }
 
 FooTranspiler.prototype.enterSourceElement = function (ctx) {

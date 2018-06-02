@@ -9,10 +9,10 @@ var fs = require('fs');
 //TODO making eval work
 
 var input = `
-    {var x= function (x,y) {
-            return 2;
-        }; var   asd = 4; 
-    }
+    // {var x= function (x,y) {
+    //         return 2;
+    //     }; var   asd = 4; 
+    // }
     owl_get :) "http://fajny-url" console.log('test-inside');
         owl_get :) "http://fajny-url-nested" console.log('test-inside-inside'); :)
     :)
@@ -37,7 +37,7 @@ try{
         }
         console.log("The file was saved!");
     }); 
-    // eval(transpiler.output);
+    eval(transpiler.output);
 } catch (error){
     console.log(error);
 }
