@@ -19,6 +19,9 @@ var input = `
     owl_post :) "http://fajniejszy-url" :) { "asd":"asd"} console.log('test-inside');; :)
     var variable = {a : { x : 4} };
     owl_json :) variable :) "a.b.c.d" :)
+    owl_get_endpoint :) "/" :) "hello" :)
+    owl_get :) "http://localhost:5000/" console.log(res); :)
+
     `;
 var chars = new antlr4.InputStream(input);
 var lexer = new ECMAScriptLexer.ECMAScriptLexer(chars);

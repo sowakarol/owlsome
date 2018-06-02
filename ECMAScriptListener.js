@@ -83,6 +83,33 @@ ECMAScriptListener.prototype.exitOwlJsonCheckStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#owlGetEndpointStatement.
+ECMAScriptListener.prototype.enterOwlGetEndpointStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlGetEndpointStatement.
+ECMAScriptListener.prototype.exitOwlGetEndpointStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlGetEndpointStatementArg1.
+ECMAScriptListener.prototype.enterOwlGetEndpointStatementArg1 = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlGetEndpointStatementArg1.
+ECMAScriptListener.prototype.exitOwlGetEndpointStatementArg1 = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlGetEndpointStatementArg2.
+ECMAScriptListener.prototype.enterOwlGetEndpointStatementArg2 = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlGetEndpointStatementArg2.
+ECMAScriptListener.prototype.exitOwlGetEndpointStatementArg2 = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#statement.
 ECMAScriptListener.prototype.enterStatement = function(ctx) {
 };

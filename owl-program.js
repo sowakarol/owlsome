@@ -1,5 +1,8 @@
 
 	var http = require('http');
+	var express = require('express');
+
+	var app = express();
 	
 	async function owl0() { 
 		return await http.get( "http://fajny-url" , (res) => { 
@@ -35,3 +38,15 @@ var variable={a:{x:4}};
 	}, variable);
 	console.log(variable);
 	
+	app.get("/", function (req, res) {
+		res.send("hello");
+	});
+	
+	async function owl3() { 
+		return await http.get( "http://localhost:5000/" , (res) => { 
+	console.log(res);
+}).on("error", (err) => {
+	console.log("Error: " + err.message);
+});
+} 
+owl3()

@@ -174,6 +174,7 @@ owlStatement
  : owlGetStatement
  | owlPostStatement
  | owlJsonCheckStatement
+ | owlGetEndpointStatement
  ;
 
 owlGetStatement
@@ -190,6 +191,18 @@ owlJsonCheckStatement
  : OwlJsonCheck ':)' (objectLiteral | Identifier) ':)' StringLiteral ':)'
 ;
 
+
+owlGetEndpointStatement
+ : 'owl_get_endpoint' ':)' owlGetEndpointStatementArg1 ':)' owlGetEndpointStatementArg2 ':)'
+;
+
+owlGetEndpointStatementArg1
+ : StringLiteral
+;
+
+owlGetEndpointStatementArg2
+ : StringLiteral | objectLiteral | Identifier
+;
 /// Statement :
 ///     Block
 ///     VariableStatement

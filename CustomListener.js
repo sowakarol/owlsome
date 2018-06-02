@@ -18,6 +18,9 @@ FooTranspiler.prototype.constructor = ECMAScriptListener;
 FooTranspiler.prototype.enterProgram = function (ctx) {
 	this.output = `
 	var http = require('http');
+	var express = require('express');
+
+	var app = express();
 	`;
 }
 
@@ -39,6 +42,17 @@ FooTranspiler.prototype.exitOwlGetStatement = function (ctx) {
 } 
 owl${this.functionCounter.pop()}()
 `;
+}
+
+FooTranspiler.prototype.enterOwlGetEndpointStatement = function (ctx) {
+	let endpoint = ctx.owlGetEndpointStatementArg1().getText();
+	let arg = ctx.owlGetEndpointStatementArg2().getText();
+
+	this.output += `
+	app.get(${endpoint}, function (req, res) {
+		res.send(${arg});
+	});
+	`
 }
 
 FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
