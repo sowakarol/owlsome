@@ -177,13 +177,13 @@ owlStatement
  ;
 
 owlGetStatement
- : OwlGet ':)' (StringLiteral | Identifier) (jsstatement)* ':)'
+ : OwlGet ':)' (StringLiteral | Identifier) (statement)* ':)'
 ;
 
 
 
 owlPostStatement
- : OwlPost ':)' (StringLiteral | Identifier) ':)'  objectLiteral (jsstatement)* ':)'
+ : OwlPost ':)' (StringLiteral | Identifier) ':)'  objectLiteral (statement)* ':)'
 ;
 
 owlJsonCheckStatement

@@ -421,11 +421,11 @@ public class ECMAScriptParser extends Parser {
 		public TerminalNode OwlGet() { return getToken(ECMAScriptParser.OwlGet, 0); }
 		public TerminalNode StringLiteral() { return getToken(ECMAScriptParser.StringLiteral, 0); }
 		public TerminalNode Identifier() { return getToken(ECMAScriptParser.Identifier, 0); }
-		public List<JsstatementContext> jsstatement() {
-			return getRuleContexts(JsstatementContext.class);
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
 		}
-		public JsstatementContext jsstatement(int i) {
-			return getRuleContext(JsstatementContext.class,i);
+		public StatementContext statement(int i) {
+			return getRuleContext(StatementContext.class,i);
 		}
 		public OwlGetStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -457,11 +457,11 @@ public class ECMAScriptParser extends Parser {
 			setState(147);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << OpenParen) | (1L << OpenBrace) | (1L << SemiColon) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << BitNot) | (1L << Not) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << OctalIntegerLiteral) | (1L << Break) | (1L << Do) | (1L << Typeof) | (1L << New))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (Var - 64)) | (1L << (Return - 64)) | (1L << (Void - 64)) | (1L << (Continue - 64)) | (1L << (For - 64)) | (1L << (Switch - 64)) | (1L << (While - 64)) | (1L << (Function - 64)) | (1L << (This - 64)) | (1L << (With - 64)) | (1L << (If - 64)) | (1L << (Throw - 64)) | (1L << (Delete - 64)) | (1L << (Try - 64)) | (1L << (Identifier - 64)) | (1L << (StringLiteral - 64)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << OpenParen) | (1L << OpenBrace) | (1L << SemiColon) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << BitNot) | (1L << Not) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << OctalIntegerLiteral) | (1L << Break) | (1L << Do) | (1L << Typeof) | (1L << New))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (Var - 64)) | (1L << (Return - 64)) | (1L << (Void - 64)) | (1L << (Continue - 64)) | (1L << (For - 64)) | (1L << (Switch - 64)) | (1L << (While - 64)) | (1L << (Function - 64)) | (1L << (This - 64)) | (1L << (With - 64)) | (1L << (If - 64)) | (1L << (Throw - 64)) | (1L << (Delete - 64)) | (1L << (Try - 64)) | (1L << (OwlGet - 64)) | (1L << (OwlPost - 64)) | (1L << (OwlJsonCheck - 64)) | (1L << (Identifier - 64)) | (1L << (StringLiteral - 64)))) != 0)) {
 				{
 				{
 				setState(144);
-				jsstatement();
+				statement();
 				}
 				}
 				setState(149);
@@ -490,11 +490,11 @@ public class ECMAScriptParser extends Parser {
 		}
 		public TerminalNode StringLiteral() { return getToken(ECMAScriptParser.StringLiteral, 0); }
 		public TerminalNode Identifier() { return getToken(ECMAScriptParser.Identifier, 0); }
-		public List<JsstatementContext> jsstatement() {
-			return getRuleContexts(JsstatementContext.class);
+		public List<StatementContext> statement() {
+			return getRuleContexts(StatementContext.class);
 		}
-		public JsstatementContext jsstatement(int i) {
-			return getRuleContext(JsstatementContext.class,i);
+		public StatementContext statement(int i) {
+			return getRuleContext(StatementContext.class,i);
 		}
 		public OwlPostStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -530,11 +530,11 @@ public class ECMAScriptParser extends Parser {
 			setState(160);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << OpenParen) | (1L << OpenBrace) | (1L << SemiColon) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << BitNot) | (1L << Not) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << OctalIntegerLiteral) | (1L << Break) | (1L << Do) | (1L << Typeof) | (1L << New))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (Var - 64)) | (1L << (Return - 64)) | (1L << (Void - 64)) | (1L << (Continue - 64)) | (1L << (For - 64)) | (1L << (Switch - 64)) | (1L << (While - 64)) | (1L << (Function - 64)) | (1L << (This - 64)) | (1L << (With - 64)) | (1L << (If - 64)) | (1L << (Throw - 64)) | (1L << (Delete - 64)) | (1L << (Try - 64)) | (1L << (Identifier - 64)) | (1L << (StringLiteral - 64)))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << OpenParen) | (1L << OpenBrace) | (1L << SemiColon) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << BitNot) | (1L << Not) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << OctalIntegerLiteral) | (1L << Break) | (1L << Do) | (1L << Typeof) | (1L << New))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (Var - 64)) | (1L << (Return - 64)) | (1L << (Void - 64)) | (1L << (Continue - 64)) | (1L << (For - 64)) | (1L << (Switch - 64)) | (1L << (While - 64)) | (1L << (Function - 64)) | (1L << (This - 64)) | (1L << (With - 64)) | (1L << (If - 64)) | (1L << (Throw - 64)) | (1L << (Delete - 64)) | (1L << (Try - 64)) | (1L << (OwlGet - 64)) | (1L << (OwlPost - 64)) | (1L << (OwlJsonCheck - 64)) | (1L << (Identifier - 64)) | (1L << (StringLiteral - 64)))) != 0)) {
 				{
 				{
 				setState(157);
-				jsstatement();
+				statement();
 				}
 				}
 				setState(162);
@@ -4704,11 +4704,11 @@ public class ECMAScriptParser extends Parser {
 		"\3\2\2\2\u008a\u008e\5\f\7\2\u008b\u008e\5\16\b\2\u008c\u008e\5\20\t\2"+
 		"\u008d\u008a\3\2\2\2\u008d\u008b\3\2\2\2\u008d\u008c\3\2\2\2\u008e\13"+
 		"\3\2\2\2\u008f\u0090\7T\2\2\u0090\u0091\7\3\2\2\u0091\u0095\t\2\2\2\u0092"+
-		"\u0094\5\24\13\2\u0093\u0092\3\2\2\2\u0094\u0097\3\2\2\2\u0095\u0093\3"+
+		"\u0094\5\22\n\2\u0093\u0092\3\2\2\2\u0094\u0097\3\2\2\2\u0095\u0093\3"+
 		"\2\2\2\u0095\u0096\3\2\2\2\u0096\u0098\3\2\2\2\u0097\u0095\3\2\2\2\u0098"+
 		"\u0099\7\3\2\2\u0099\r\3\2\2\2\u009a\u009b\7U\2\2\u009b\u009c\7\3\2\2"+
 		"\u009c\u009d\t\2\2\2\u009d\u009e\7\3\2\2\u009e\u00a2\5R*\2\u009f\u00a1"+
-		"\5\24\13\2\u00a0\u009f\3\2\2\2\u00a1\u00a4\3\2\2\2\u00a2\u00a0\3\2\2\2"+
+		"\5\22\n\2\u00a0\u009f\3\2\2\2\u00a1\u00a4\3\2\2\2\u00a2\u00a0\3\2\2\2"+
 		"\u00a2\u00a3\3\2\2\2\u00a3\u00a5\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a5\u00a6"+
 		"\7\3\2\2\u00a6\17\3\2\2\2\u00a7\u00a8\7V\2\2\u00a8\u00ab\7\3\2\2\u00a9"+
 		"\u00ac\5R*\2\u00aa\u00ac\7g\2\2\u00ab\u00a9\3\2\2\2\u00ab\u00aa\3\2\2"+

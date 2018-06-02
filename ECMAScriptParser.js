@@ -138,14 +138,14 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0003\u0002\u0002\u0002\u008d\u008c\u0003\u0002\u0002\u0002\u008e\u000b",
     "\u0003\u0002\u0002\u0002\u008f\u0090\u0007T\u0002\u0002\u0090\u0091",
     "\u0007\u0003\u0002\u0002\u0091\u0095\t\u0002\u0002\u0002\u0092\u0094",
-    "\u0005\u0014\u000b\u0002\u0093\u0092\u0003\u0002\u0002\u0002\u0094\u0097",
+    "\u0005\u0012\n\u0002\u0093\u0092\u0003\u0002\u0002\u0002\u0094\u0097",
     "\u0003\u0002\u0002\u0002\u0095\u0093\u0003\u0002\u0002\u0002\u0095\u0096",
     "\u0003\u0002\u0002\u0002\u0096\u0098\u0003\u0002\u0002\u0002\u0097\u0095",
     "\u0003\u0002\u0002\u0002\u0098\u0099\u0007\u0003\u0002\u0002\u0099\r",
     "\u0003\u0002\u0002\u0002\u009a\u009b\u0007U\u0002\u0002\u009b\u009c",
     "\u0007\u0003\u0002\u0002\u009c\u009d\t\u0002\u0002\u0002\u009d\u009e",
     "\u0007\u0003\u0002\u0002\u009e\u00a2\u0005R*\u0002\u009f\u00a1\u0005",
-    "\u0014\u000b\u0002\u00a0\u009f\u0003\u0002\u0002\u0002\u00a1\u00a4\u0003",
+    "\u0012\n\u0002\u00a0\u009f\u0003\u0002\u0002\u0002\u00a1\u00a4\u0003",
     "\u0002\u0002\u0002\u00a2\u00a0\u0003\u0002\u0002\u0002\u00a2\u00a3\u0003",
     "\u0002\u0002\u0002\u00a3\u00a5\u0003\u0002\u0002\u0002\u00a4\u00a2\u0003",
     "\u0002\u0002\u0002\u00a5\u00a6\u0007\u0003\u0002\u0002\u00a6\u000f\u0003",
@@ -1126,14 +1126,14 @@ OwlGetStatementContext.prototype.Identifier = function() {
     return this.getToken(ECMAScriptParser.Identifier, 0);
 };
 
-OwlGetStatementContext.prototype.jsstatement = function(i) {
+OwlGetStatementContext.prototype.statement = function(i) {
     if(i===undefined) {
         i = null;
     }
     if(i===null) {
-        return this.getTypedRuleContexts(JsstatementContext);
+        return this.getTypedRuleContexts(StatementContext);
     } else {
-        return this.getTypedRuleContext(JsstatementContext,i);
+        return this.getTypedRuleContext(StatementContext,i);
     }
 };
 
@@ -1177,9 +1177,9 @@ ECMAScriptParser.prototype.owlGetStatement = function() {
         this.state = 147;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
-        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.SemiColon) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 52)) & ~0x1f) == 0 && ((1 << (_la - 52)) & ((1 << (ECMAScriptParser.NullLiteral - 52)) | (1 << (ECMAScriptParser.BooleanLiteral - 52)) | (1 << (ECMAScriptParser.DecimalLiteral - 52)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 52)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 52)) | (1 << (ECMAScriptParser.Break - 52)) | (1 << (ECMAScriptParser.Do - 52)) | (1 << (ECMAScriptParser.Typeof - 52)) | (1 << (ECMAScriptParser.New - 52)) | (1 << (ECMAScriptParser.Var - 52)) | (1 << (ECMAScriptParser.Return - 52)) | (1 << (ECMAScriptParser.Void - 52)) | (1 << (ECMAScriptParser.Continue - 52)) | (1 << (ECMAScriptParser.For - 52)) | (1 << (ECMAScriptParser.Switch - 52)) | (1 << (ECMAScriptParser.While - 52)) | (1 << (ECMAScriptParser.Function - 52)) | (1 << (ECMAScriptParser.This - 52)) | (1 << (ECMAScriptParser.With - 52)) | (1 << (ECMAScriptParser.If - 52)) | (1 << (ECMAScriptParser.Throw - 52)) | (1 << (ECMAScriptParser.Delete - 52)) | (1 << (ECMAScriptParser.Try - 52)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.SemiColon) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 52)) & ~0x1f) == 0 && ((1 << (_la - 52)) & ((1 << (ECMAScriptParser.NullLiteral - 52)) | (1 << (ECMAScriptParser.BooleanLiteral - 52)) | (1 << (ECMAScriptParser.DecimalLiteral - 52)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 52)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 52)) | (1 << (ECMAScriptParser.Break - 52)) | (1 << (ECMAScriptParser.Do - 52)) | (1 << (ECMAScriptParser.Typeof - 52)) | (1 << (ECMAScriptParser.New - 52)) | (1 << (ECMAScriptParser.Var - 52)) | (1 << (ECMAScriptParser.Return - 52)) | (1 << (ECMAScriptParser.Void - 52)) | (1 << (ECMAScriptParser.Continue - 52)) | (1 << (ECMAScriptParser.For - 52)) | (1 << (ECMAScriptParser.Switch - 52)) | (1 << (ECMAScriptParser.While - 52)) | (1 << (ECMAScriptParser.Function - 52)) | (1 << (ECMAScriptParser.This - 52)) | (1 << (ECMAScriptParser.With - 52)) | (1 << (ECMAScriptParser.If - 52)) | (1 << (ECMAScriptParser.Throw - 52)) | (1 << (ECMAScriptParser.Delete - 52)) | (1 << (ECMAScriptParser.Try - 52)) | (1 << (ECMAScriptParser.OwlGet - 52)) | (1 << (ECMAScriptParser.OwlPost - 52)))) !== 0) || ((((_la - 84)) & ~0x1f) == 0 && ((1 << (_la - 84)) & ((1 << (ECMAScriptParser.OwlJsonCheck - 84)) | (1 << (ECMAScriptParser.Identifier - 84)) | (1 << (ECMAScriptParser.StringLiteral - 84)))) !== 0)) {
             this.state = 144;
-            this.jsstatement();
+            this.statement();
             this.state = 149;
             this._errHandler.sync(this);
             _la = this._input.LA(1);
@@ -1232,14 +1232,14 @@ OwlPostStatementContext.prototype.Identifier = function() {
     return this.getToken(ECMAScriptParser.Identifier, 0);
 };
 
-OwlPostStatementContext.prototype.jsstatement = function(i) {
+OwlPostStatementContext.prototype.statement = function(i) {
     if(i===undefined) {
         i = null;
     }
     if(i===null) {
-        return this.getTypedRuleContexts(JsstatementContext);
+        return this.getTypedRuleContexts(StatementContext);
     } else {
-        return this.getTypedRuleContext(JsstatementContext,i);
+        return this.getTypedRuleContext(StatementContext,i);
     }
 };
 
@@ -1287,9 +1287,9 @@ ECMAScriptParser.prototype.owlPostStatement = function() {
         this.state = 160;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
-        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.SemiColon) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 52)) & ~0x1f) == 0 && ((1 << (_la - 52)) & ((1 << (ECMAScriptParser.NullLiteral - 52)) | (1 << (ECMAScriptParser.BooleanLiteral - 52)) | (1 << (ECMAScriptParser.DecimalLiteral - 52)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 52)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 52)) | (1 << (ECMAScriptParser.Break - 52)) | (1 << (ECMAScriptParser.Do - 52)) | (1 << (ECMAScriptParser.Typeof - 52)) | (1 << (ECMAScriptParser.New - 52)) | (1 << (ECMAScriptParser.Var - 52)) | (1 << (ECMAScriptParser.Return - 52)) | (1 << (ECMAScriptParser.Void - 52)) | (1 << (ECMAScriptParser.Continue - 52)) | (1 << (ECMAScriptParser.For - 52)) | (1 << (ECMAScriptParser.Switch - 52)) | (1 << (ECMAScriptParser.While - 52)) | (1 << (ECMAScriptParser.Function - 52)) | (1 << (ECMAScriptParser.This - 52)) | (1 << (ECMAScriptParser.With - 52)) | (1 << (ECMAScriptParser.If - 52)) | (1 << (ECMAScriptParser.Throw - 52)) | (1 << (ECMAScriptParser.Delete - 52)) | (1 << (ECMAScriptParser.Try - 52)))) !== 0) || _la===ECMAScriptParser.Identifier || _la===ECMAScriptParser.StringLiteral) {
+        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << ECMAScriptParser.RegularExpressionLiteral) | (1 << ECMAScriptParser.OpenBracket) | (1 << ECMAScriptParser.OpenParen) | (1 << ECMAScriptParser.OpenBrace) | (1 << ECMAScriptParser.SemiColon) | (1 << ECMAScriptParser.PlusPlus) | (1 << ECMAScriptParser.MinusMinus) | (1 << ECMAScriptParser.Plus) | (1 << ECMAScriptParser.Minus) | (1 << ECMAScriptParser.BitNot) | (1 << ECMAScriptParser.Not))) !== 0) || ((((_la - 52)) & ~0x1f) == 0 && ((1 << (_la - 52)) & ((1 << (ECMAScriptParser.NullLiteral - 52)) | (1 << (ECMAScriptParser.BooleanLiteral - 52)) | (1 << (ECMAScriptParser.DecimalLiteral - 52)) | (1 << (ECMAScriptParser.HexIntegerLiteral - 52)) | (1 << (ECMAScriptParser.OctalIntegerLiteral - 52)) | (1 << (ECMAScriptParser.Break - 52)) | (1 << (ECMAScriptParser.Do - 52)) | (1 << (ECMAScriptParser.Typeof - 52)) | (1 << (ECMAScriptParser.New - 52)) | (1 << (ECMAScriptParser.Var - 52)) | (1 << (ECMAScriptParser.Return - 52)) | (1 << (ECMAScriptParser.Void - 52)) | (1 << (ECMAScriptParser.Continue - 52)) | (1 << (ECMAScriptParser.For - 52)) | (1 << (ECMAScriptParser.Switch - 52)) | (1 << (ECMAScriptParser.While - 52)) | (1 << (ECMAScriptParser.Function - 52)) | (1 << (ECMAScriptParser.This - 52)) | (1 << (ECMAScriptParser.With - 52)) | (1 << (ECMAScriptParser.If - 52)) | (1 << (ECMAScriptParser.Throw - 52)) | (1 << (ECMAScriptParser.Delete - 52)) | (1 << (ECMAScriptParser.Try - 52)) | (1 << (ECMAScriptParser.OwlGet - 52)) | (1 << (ECMAScriptParser.OwlPost - 52)))) !== 0) || ((((_la - 84)) & ~0x1f) == 0 && ((1 << (_la - 84)) & ((1 << (ECMAScriptParser.OwlJsonCheck - 84)) | (1 << (ECMAScriptParser.Identifier - 84)) | (1 << (ECMAScriptParser.StringLiteral - 84)))) !== 0)) {
             this.state = 157;
-            this.jsstatement();
+            this.statement();
             this.state = 162;
             this._errHandler.sync(this);
             _la = this._input.LA(1);
