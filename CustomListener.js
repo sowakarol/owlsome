@@ -9,11 +9,6 @@ function FooTranspiler() {
 }
 
 
-//TODO
-/*
-	add nested owlget/post methods    owlget :) url owlget2 :) url2 &   &
-*/
-
 FooTranspiler.prototype = Object.create(ECMAScriptListener.prototype);
 FooTranspiler.prototype.constructor = ECMAScriptListener;
 
@@ -89,9 +84,6 @@ FooTranspiler.prototype.enterSourceElement = function (ctx) {
 		this.output += ctx.functionDeclaration().getText();
 	}
 };
-
-
-
 
 FooTranspiler.prototype.enterJsstatement = function (ctx) {
 	this.output += ctx.getText();
