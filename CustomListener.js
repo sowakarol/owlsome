@@ -22,7 +22,7 @@ FooTranspiler.prototype.enterOwlGetStatement = function (ctx) {
 	let arg = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
 
 	this.output += `
-	async owl${this.counter++}() { 
+	async function owl${this.counter++}() { 
 		return await http.get( ${arg} , (res) => { 
 	`;
 }
@@ -45,7 +45,7 @@ FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
 	};
 
 	this.output += `
-	async owl${this.counter++}() { 
+	async function owl${this.counter++}() { 
 		return await http.request( ${JSON.stringify(options)} , (res) => { 
 	`;
 }
