@@ -5,7 +5,7 @@ var ECMAScriptListener = require('./ECMAScriptListener.js');
 var ECMAScriptParser = require('./ECMAScriptParser.js');
 var FooTranspiler = require('./CustomListener.js');
 var fs = require('fs');
-
+const owlGet = require('./http-wrappers').owlGet;
 //TODO making eval work
 
 var input = `
@@ -29,19 +29,19 @@ var tokens = new antlr4.CommonTokenStream(lexer);
 var parser = new ECMAScriptParser.ECMAScriptParser(tokens);
 parser.buildParseTrees = true;
 
-try{
+try {
     var tree = parser.program();
     var transpiler = new FooTranspiler();
     antlr4.tree.ParseTreeWalker.DEFAULT.walk(transpiler, tree);
     console.log(transpiler.output);
-    fs.writeFile("owl-program.js", transpiler.output, function(err) {
-        if(err) {
+    fs.writeFile("owl-program.js", transpiler.output, function (err) {
+        if (err) {
             return console.log(err);
         }
         console.log("The file was saved!");
-    }); 
+    });
     eval(transpiler.output);
-} catch (error){
+} catch (error) {
     console.log(error);
 }
 

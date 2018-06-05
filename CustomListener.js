@@ -17,31 +17,28 @@ FooTranspiler.prototype.constructor = ECMAScriptListener;
 
 FooTranspiler.prototype.enterProgram = function (ctx) {
 	this.output = `
-	var http = require('http');
-	var express = require('express');
+var http = require('http');
+var express = require('express');
+const owlGet = require('./http-wrappers').owlGet;
+var app = express();
+(async () => {
+`;
+}
 
-	var app = express();
-	`;
+FooTranspiler.prototype.exitProgram = function (ctx) {
+	this.output += `})()`;
 }
 
 FooTranspiler.prototype.enterOwlGetStatement = function (ctx) {
 	let arg = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
 
-	this.output += `
-	async function owl${this.maxFunc}() { 
-		return await http.get( ${arg} , (res) => { 
+	this.output += `	
+	await owlGet(${arg})
 	`;
-	this.functionCounter.push(this.maxFunc++);
 }
 
 FooTranspiler.prototype.exitOwlGetStatement = function (ctx) {
-	this.output += `
-}).on("error", (err) => {
-	console.log("Error: " + err.message);
-});
-} 
-owl${this.functionCounter.pop()}()
-`;
+	this.output += ``;
 }
 
 FooTranspiler.prototype.enterOwlGetEndpointStatement = function (ctx) {
