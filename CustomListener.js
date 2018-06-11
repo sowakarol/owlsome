@@ -26,14 +26,15 @@ var app = express();
 }
 
 FooTranspiler.prototype.exitProgram = function (ctx) {
-	this.output += `})()`;
+	this.output += 
+	`
+})()`;
 }
 
 FooTranspiler.prototype.enterOwlGetStatement = function (ctx) {
 	let arg = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
 
-	this.output += `	
-	await owlGet(${arg})
+	this.output += `await owlGet(${arg});
 	`;
 }
 

@@ -1,0 +1,14 @@
+// {var x= function (x,y) {
+//         return 2;
+//     }; var   asd = 4; 
+// }
+var url = "http://localhost:7070/hello";
+var hello = owl_get :) url // TO SIE WYSYPUJE
+console.log(hello);
+//TODO:
+//owl_post :) "http://fajniejszy-url" :) { "asd":"asd"} console.log('test-inside');; :)
+
+var variable = {a : { x : 4} };
+//owl_json :) variable :) "a.b.c.d" :)
+
+// owl_get_endpoint :) "/" :) "hello" :)

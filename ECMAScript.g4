@@ -178,7 +178,7 @@ owlStatement
  ;
 
 owlGetStatement
- : OwlGet ':)' (StringLiteral | Identifier) (statement)* ':)'
+ : OwlGet ':)' (StringLiteral | Identifier)
 ;
 
 
@@ -240,6 +240,7 @@ jsstatement
  | switchStatement
  | throwStatement
  | tryStatement
+//  | owlStatement 
 ;
 
 block
