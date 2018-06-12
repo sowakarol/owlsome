@@ -47,6 +47,24 @@ ECMAScriptListener.prototype.exitSourceElement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#statement.
+ECMAScriptListener.prototype.enterStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#statement.
+ECMAScriptListener.prototype.exitStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#jsstatement.
+ECMAScriptListener.prototype.enterJsstatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#jsstatement.
+ECMAScriptListener.prototype.exitJsstatement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#owlStatement.
 ECMAScriptListener.prototype.enterOwlStatement = function(ctx) {
 };
@@ -74,6 +92,33 @@ ECMAScriptListener.prototype.exitOwlPostStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#owlPutStatement.
+ECMAScriptListener.prototype.enterOwlPutStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlPutStatement.
+ECMAScriptListener.prototype.exitOwlPutStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlDeleteStatement.
+ECMAScriptListener.prototype.enterOwlDeleteStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlDeleteStatement.
+ECMAScriptListener.prototype.exitOwlDeleteStatement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlPrintStatement.
+ECMAScriptListener.prototype.enterOwlPrintStatement = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlPrintStatement.
+ECMAScriptListener.prototype.exitOwlPrintStatement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#owlJsonCheckStatement.
 ECMAScriptListener.prototype.enterOwlJsonCheckStatement = function(ctx) {
 };
@@ -92,6 +137,24 @@ ECMAScriptListener.prototype.exitOwlGetEndpointStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#owlInvokeOperator.
+ECMAScriptListener.prototype.enterOwlInvokeOperator = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlInvokeOperator.
+ECMAScriptListener.prototype.exitOwlInvokeOperator = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#owlSeparateOperator.
+ECMAScriptListener.prototype.enterOwlSeparateOperator = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlSeparateOperator.
+ECMAScriptListener.prototype.exitOwlSeparateOperator = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#owlGetEndpointStatementArg1.
 ECMAScriptListener.prototype.enterOwlGetEndpointStatementArg1 = function(ctx) {
 };
@@ -107,24 +170,6 @@ ECMAScriptListener.prototype.enterOwlGetEndpointStatementArg2 = function(ctx) {
 
 // Exit a parse tree produced by ECMAScriptParser#owlGetEndpointStatementArg2.
 ECMAScriptListener.prototype.exitOwlGetEndpointStatementArg2 = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ECMAScriptParser#statement.
-ECMAScriptListener.prototype.enterStatement = function(ctx) {
-};
-
-// Exit a parse tree produced by ECMAScriptParser#statement.
-ECMAScriptListener.prototype.exitStatement = function(ctx) {
-};
-
-
-// Enter a parse tree produced by ECMAScriptParser#jsstatement.
-ECMAScriptListener.prototype.enterJsstatement = function(ctx) {
-};
-
-// Exit a parse tree produced by ECMAScriptParser#jsstatement.
-ECMAScriptListener.prototype.exitJsstatement = function(ctx) {
 };
 
 
@@ -665,6 +710,15 @@ ECMAScriptListener.prototype.enterTypeofExpression = function(ctx) {
 
 // Exit a parse tree produced by ECMAScriptParser#TypeofExpression.
 ECMAScriptListener.prototype.exitTypeofExpression = function(ctx) {
+};
+
+
+// Enter a parse tree produced by ECMAScriptParser#OwlExpression.
+ECMAScriptListener.prototype.enterOwlExpression = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#OwlExpression.
+ECMAScriptListener.prototype.exitOwlExpression = function(ctx) {
 };
 
 

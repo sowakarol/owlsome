@@ -15,32 +15,57 @@ function FooTranspiler() {
 FooTranspiler.prototype = Object.create(ECMAScriptListener.prototype);
 FooTranspiler.prototype.constructor = ECMAScriptListener;
 
+
 FooTranspiler.prototype.enterProgram = function (ctx) {
 	this.output = `
-var http = require('http');
 var express = require('express');
 const owlGet = require('./http-wrappers').owlGet;
+const owlPost = require('./http-wrappers').owlPost;
+const owlPut = require('./http-wrappers').owlPut;
+const owlDelete = require('./http-wrappers').owlDelete;
 var app = express();
+
 (async () => {
 `;
 }
 
 FooTranspiler.prototype.exitProgram = function (ctx) {
-	this.output += 
-	`
+	this.output +=
+		`
 })()`;
 }
 
 FooTranspiler.prototype.enterOwlGetStatement = function (ctx) {
-	let arg = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
+	let url = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
 
-	this.output += `await owlGet(${arg});
+	this.output += ` await owlGet(${url});\n
 	`;
 }
 
-FooTranspiler.prototype.exitOwlGetStatement = function (ctx) {
-	this.output += ``;
+FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
+	let url = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
+	let body = ctx.objectLiteral().getText();
+
+	this.output += `await owlPost(${url}, ${body});\n`
 }
+
+FooTranspiler.prototype.enterOwlPutStatement = function (ctx) {
+	let url = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
+	let body = ctx.objectLiteral() != null ? ctx.objectLiteral().getText() : ctx.Identifier().getText();
+
+	this.output += `await owlPut(${url}, ${body});\n`
+}
+
+FooTranspiler.prototype.enterOwlDeleteStatement = function (ctx) {
+	let url = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
+	this.output += `await owlDelete(${url});\n`
+}
+
+FooTranspiler.prototype.enterOwlPrintStatement = function (ctx) {
+	let expr = ctx.getText();
+	this.output += `await console.log(${expr});\n`
+}
+
 
 FooTranspiler.prototype.enterOwlGetEndpointStatement = function (ctx) {
 	let endpoint = ctx.owlGetEndpointStatementArg1().getText();
@@ -51,34 +76,6 @@ FooTranspiler.prototype.enterOwlGetEndpointStatement = function (ctx) {
 		res.send(${arg});
 	});
 	`
-}
-
-FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
-	let arg = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
-
-	let options = {
-		...JSON.parse(ctx.objectLiteral().getText()),
-		url: arg,
-		method: "post"
-	};
-
-	this.output += `
-	async function owl${this.maxFunc}() { 
-		return await http.request( ${JSON.stringify(options)} , (res) => { 
-	`;
-	this.functionCounter.push(this.maxFunc++);
-
-}
-
-
-FooTranspiler.prototype.exitOwlPostStatement = function (ctx) {
-	this.output += `
-}).on("error", (err) => {
-	console.log("Error: " + err.message);
-});
-}
-owl${this.functionCounter.pop()}()
-`;
 }
 
 FooTranspiler.prototype.enterOwlJsonCheckStatement = function (ctx) {
@@ -135,5 +132,10 @@ FooTranspiler.prototype.enterJsstatement = function (ctx) {
 // 		return ctx.STRING().getText().replace(/\$\{([^\}]+)\}/g, '" + $1 + "');
 // 	} else return "undefined";
 // }
-
+FooTranspiler.prototype.getOutput = function () {
+	return this.output
+		.replace(/owl_.+?await/g, ' await')
+		.replace(/owl_print->/g, '')
+		.replace(/owl_json->.+?\s/g, '')
+};
 module.exports = FooTranspiler;

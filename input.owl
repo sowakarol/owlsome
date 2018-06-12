@@ -2,13 +2,21 @@
 //         return 2;
 //     }; var   asd = 4; 
 // }
+
 var url = "http://localhost:7070/hello";
-var hello = owl_get :) url // TO SIE WYSYPUJE
+var hello = owl_get->url
 console.log(hello);
-//TODO:
-//owl_post :) "http://fajniejszy-url" :) { "asd":"asd"} console.log('test-inside');; :)
+
+var response = owl_post -> url :: {"name":"Sowa"} 
+console.log(response);
+
+
+owl_put -> url :: {id: 1, name: "Bartek"}
+var url2 = url + "/1";
+owl_delete -> url2
+
+owl_print -> "hello world!"
 
 var variable = {a : { x : 4} };
-//owl_json :) variable :) "a.b.c.d" :)
+owl_json -> variable :: "a.b.c.d"
 
-// owl_get_endpoint :) "/" :) "hello" :)

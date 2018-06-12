@@ -169,40 +169,6 @@ sourceElement
  | functionDeclaration
  ;
 
-
-owlStatement 
- : owlGetStatement
- | owlPostStatement
- | owlJsonCheckStatement
- | owlGetEndpointStatement
- ;
-
-owlGetStatement
- : OwlGet ':)' (StringLiteral | Identifier)
-;
-
-
-
-owlPostStatement
- : OwlPost ':)' (StringLiteral | Identifier) ':)'  objectLiteral (statement)* ':)'
-;
-
-owlJsonCheckStatement
- : OwlJsonCheck ':)' (objectLiteral | Identifier) ':)' StringLiteral ':)'
-;
-
-
-owlGetEndpointStatement
- : 'owl_get_endpoint' ':)' owlGetEndpointStatementArg1 ':)' owlGetEndpointStatementArg2 ':)'
-;
-
-owlGetEndpointStatementArg1
- : StringLiteral
-;
-
-owlGetEndpointStatementArg2
- : StringLiteral | objectLiteral | Identifier
-;
 /// Statement :
 ///     Block
 ///     VariableStatement
@@ -240,7 +206,61 @@ jsstatement
  | switchStatement
  | throwStatement
  | tryStatement
-//  | owlStatement 
+;
+
+owlStatement 
+ : owlGetStatement
+ | owlPutStatement
+ | owlPostStatement
+ | owlDeleteStatement
+ | owlPrintStatement
+ | owlJsonCheckStatement
+ | owlGetEndpointStatement
+ ;
+
+owlGetStatement
+ : OwlGet '->' (StringLiteral | Identifier)
+;
+
+owlPostStatement
+ : OwlPost owlInvokeOperator (StringLiteral | Identifier) owlSeparateOperator  objectLiteral
+;
+
+owlPutStatement
+ : OwlPut owlInvokeOperator (StringLiteral | Identifier) owlSeparateOperator  objectLiteral
+;
+
+owlDeleteStatement
+ : OwlDelete owlInvokeOperator (StringLiteral | Identifier)
+;
+
+owlPrintStatement
+ : OwlPrint owlInvokeOperator singleExpression
+;
+
+owlJsonCheckStatement
+ : OwlJsonCheck owlInvokeOperator (objectLiteral | Identifier) owlSeparateOperator StringLiteral
+;
+
+
+owlGetEndpointStatement
+ : 'owl_get_endpoint' owlInvokeOperator owlGetEndpointStatementArg1 owlSeparateOperator owlGetEndpointStatementArg2
+;
+
+owlInvokeOperator
+ : '->'
+;
+
+owlSeparateOperator
+ : '::'
+;
+
+owlGetEndpointStatementArg1
+ : StringLiteral
+;
+
+owlGetEndpointStatementArg2
+ : StringLiteral | objectLiteral | Identifier
 ;
 
 block
@@ -663,6 +683,7 @@ singleExpression
  | arrayLiteral                                                           # ArrayLiteralExpression
  | objectLiteral                                                          # ObjectLiteralExpression
  | '(' expressionSequence ')'                                             # ParenthesizedExpression
+ | owlStatement                                             # OwlExpression
  ;
 
 /// AssignmentOperator : one of
@@ -890,6 +911,9 @@ In         : ' in ';
 Try        : 'try';
 OwlGet     : 'owl_get';
 OwlPost    : 'owl_post';
+OwlPut    : 'owl_put';
+OwlDelete    : 'owl_delete';
+OwlPrint    : 'owl_print';
 OwlJsonCheck    : 'owl_json';
 
 /// 7.6.1.2 Future Reserved Words
