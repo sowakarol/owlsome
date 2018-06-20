@@ -7,14 +7,17 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get("/hello", (req, res) => {
-    console.log(`[GET]`);
-    res.status(200).send("Hello!");
+    console.log(`[GET]<`);
+    let response = `Hello!`
+    console.log(`[GET]>   | ${response}`);
+    res.status(200).send(response);
 })
 
 app.post("/hello", (req, res) => {
-    console.log(`[POST]   | ${JSON.stringify(req.body)}`);
-
-    res.status(200).send(`Hi ${req.body.name}!`);
+    console.log(`[POST]<  | ${JSON.stringify(req.body)}`);
+    let response = `Hi ${req.body.name}!`
+    console.log(`[POST]>  | ${response}`);
+    res.status(200).send(response);
 })
 
 app.put("/hello", (req, res) => {

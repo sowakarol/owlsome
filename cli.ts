@@ -1,4 +1,4 @@
-import { existsSync, writeFile, readFileSync } from "fs";
+import { existsSync, writeFileSync, readFileSync } from "fs";
 import { transpile } from "./transpiler";
 const OWL_EXTENSION = "owl";
 
@@ -8,12 +8,8 @@ process.argv.slice(2).forEach((filename: string) => {
         let content = readFileSync(filename, 'utf8');
         let program = transpile(content);
         const outputFileName = filename.substr(0, filename.lastIndexOf('.')) + ".js";
-        writeFile(outputFileName, program, (err) => {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("[Transpiler] Output file saved.");
-        });
+        writeFileSync(outputFileName, program);
+        console.log("\nProgram output:\n")
         eval(program);
     } else {
         console.log(`wrong path or file extension: ${filename}`);

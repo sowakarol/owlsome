@@ -7,7 +7,8 @@ var url = "http://localhost:7070/hello";
 var hello = owl_get->url
 console.log(hello);
 
-var response = owl_post -> url :: {"name":"Sowa"} 
+var body = {"name":"Sowa"};
+var response = owl_post -> url :: body
 console.log(response);
 
 
@@ -15,7 +16,8 @@ owl_put -> url :: {id: 1, name: "Bartek"}
 var url2 = url + "/1";
 owl_delete -> url2
 
-owl_print -> "hello world!"
+var x = "kompilatory 2018";
+owl_print -> x
 
 var variable = {a : { x : 4} };
 owl_json -> variable :: "a.b.c.d"

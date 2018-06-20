@@ -223,11 +223,17 @@ owlGetStatement
 ;
 
 owlPostStatement
- : OwlPost owlInvokeOperator (StringLiteral | Identifier) owlSeparateOperator  objectLiteral
+ : OwlPost owlInvokeOperator (StringLiteral | Identifier) owlSeparateOperator  owlArgument
 ;
 
+
 owlPutStatement
- : OwlPut owlInvokeOperator (StringLiteral | Identifier) owlSeparateOperator  objectLiteral
+ : OwlPut owlInvokeOperator (StringLiteral | Identifier) owlSeparateOperator  owlArgument
+;
+
+owlArgument
+ : objectLiteral
+ | Identifier
 ;
 
 owlDeleteStatement

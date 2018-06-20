@@ -101,6 +101,15 @@ ECMAScriptListener.prototype.exitOwlPutStatement = function(ctx) {
 };
 
 
+// Enter a parse tree produced by ECMAScriptParser#owlArgument.
+ECMAScriptListener.prototype.enterOwlArgument = function(ctx) {
+};
+
+// Exit a parse tree produced by ECMAScriptParser#owlArgument.
+ECMAScriptListener.prototype.exitOwlArgument = function(ctx) {
+};
+
+
 // Enter a parse tree produced by ECMAScriptParser#owlDeleteStatement.
 ECMAScriptListener.prototype.enterOwlDeleteStatement = function(ctx) {
 };

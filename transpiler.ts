@@ -6,18 +6,17 @@ const FooTranspiler = require('./CustomListener.js');
 export function transpile(input) {
 
     var chars = new InputStream(input);
-    console.log("[Transpiler] chars generated");
-
+    console.log("[Transpiler] chars  generated");
+    
+    try {
     var lexer = new ECMAScriptLexer(chars);
-    console.log("[Transpiler] lexer generated");
+    console.log("[Transpiler] lexer  generated");
     var tokens = new CommonTokenStream(lexer);
     console.log("[Transpiler] tokens generated");
     var parser = new ECMAScriptParser(tokens);
     console.log("[Transpiler] parser generated");
-    // parser.buildParseTrees = true;
-    try {
         var tree = parser.program();
-        console.log("[Transpiler] Tree generated");
+        console.log("[Transpiler] Tree   generated");
         var transpiler = new FooTranspiler();
         console.log("[Transpiler] new transpiler created");
         antrl_tree.ParseTreeWalker.DEFAULT.walk(transpiler, tree);

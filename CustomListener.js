@@ -23,7 +23,6 @@ const owlGet = require('./http-wrappers').owlGet;
 const owlPost = require('./http-wrappers').owlPost;
 const owlPut = require('./http-wrappers').owlPut;
 const owlDelete = require('./http-wrappers').owlDelete;
-var app = express();
 
 (async () => {
 `;
@@ -44,14 +43,14 @@ FooTranspiler.prototype.enterOwlGetStatement = function (ctx) {
 
 FooTranspiler.prototype.enterOwlPostStatement = function (ctx) {
 	let url = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
-	let body = ctx.objectLiteral().getText();
+	let body = ctx.owlArgument().getText();
 
 	this.output += `await owlPost(${url}, ${body});\n`
 }
 
 FooTranspiler.prototype.enterOwlPutStatement = function (ctx) {
 	let url = ctx.StringLiteral() != null ? ctx.StringLiteral().getText() : ctx.Identifier().getText();
-	let body = ctx.objectLiteral() != null ? ctx.objectLiteral().getText() : ctx.Identifier().getText();
+	let body = ctx.owlArgument().getText();
 
 	this.output += `await owlPut(${url}, ${body});\n`
 }
